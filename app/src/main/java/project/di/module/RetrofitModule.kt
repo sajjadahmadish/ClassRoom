@@ -24,16 +24,17 @@ class RetrofitModule {
     @Provides
     fun getRetrofit(@Named("url") url: String,
                     client: OkHttpClient,
-                    rxJava2CallAdapterFactory: RxJava2CallAdapterFactory) = Retrofit.Builder()
+                    rxJava2CallAdapterFactory: RxJava2CallAdapterFactory): Retrofit = Retrofit.Builder()
                         .addCallAdapterFactory(rxJava2CallAdapterFactory)
                         .addConverterFactory(GsonConverterFactory.create())
                         .baseUrl(url)
                         .client(client)
-                        .build()!!
+                        .build()
 
     @Provides
     @Singleton
-    fun provideRxJavaCallAdapterFactory(schedulerProvider: SchedulerProvider) = RxJava2CallAdapterFactory.createWithScheduler(schedulerProvider.io())!!
+    fun provideRxJavaCallAdapterFactory(schedulerProvider: SchedulerProvider): RxJava2CallAdapterFactory =
+        RxJava2CallAdapterFactory.createWithScheduler(schedulerProvider.io())
 
 
 //    @Provides

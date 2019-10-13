@@ -38,6 +38,10 @@ interface DbHelper {
 
     fun insertClazz(clazz: List<Clazz>): Observable<Boolean>
 
+    fun insertAndDeleteTopic(topics: List<Topic>, classId: String): Observable<Boolean>
+
+    fun insertAndDeletePost(posts: List<Post>, classId: String): Observable<Boolean>
+
     fun getClazzDb(): Flowable<List<Clazz>>
 
     fun deleteListClazz(idList: List<String>): Observable<Boolean>
@@ -50,68 +54,8 @@ interface DbHelper {
 
     fun truncateAll(): Observable<Boolean>
 
-/*    fun insertStores(storeList: List<Store>): Observable<Boolean>
+    fun insertPosts(response: PostResponse, id: String): Observable<Boolean>
 
-    fun insertStore(store: Store): Observable<Boolean>
+    fun getPosts(classId: String): Flowable<List<Post>>
 
-    fun insertPictureList(id: String, list: List<String>) : Observable<Boolean>
-
-    fun loadStores(): Flowable<Store>
-
-    fun loadStore(id: String): Single<Store>
-
-    fun loadPictureList(id: String): Flowable<String>
-
-    fun truncateAll(): Observable<Boolean>
-
-    fun loadMarkers(catId: String): Flowable<MarkerBrief>
-
-    fun loadAllProvinces(): Flowable<String>
-
-    fun loadCityByPID(id: String): Flowable<String>
-
-    fun findCityId(title: String): Single<String>
-
-    fun findProvinceId(title: String): Single<String>
-
-    fun insertProvince(provinces: List<Province>): Observable<Boolean>
-
-    fun insertCities(id: String, cities: List<City>): Observable<Boolean>
-
-    fun truncateCity(): Observable<Boolean>
-
-    fun loadBestByProvince(id: String?, catId: String?): Flowable<BestModel>
-
-    fun loadBestByCity(id: String, catId: String?): Flowable<BestModel>
-
-    fun loadBestByCategory(catId: String?): Flowable<BestModel>
-
-    fun loadAllBests(): Flowable<BestModel>
-
-    fun loadProvince(pId: String): Single<String>
-
-    fun loadCity(cId: String): Single<String>*/
-
-//    val userListItems: Flowable<PagedList<UserListItem>>
-//    fun insertUserListItem(userListItem: String): Observable<Boolean>
-//    fun deleteUserListItem(userListItem: UserListItem): Observable<Boolean>
-//    fun truncateUserListItems(): Observable<Boolean>
-
-    //    Observable<List<Question>> getAllQuestions();
-    //
-    //
-    //    Observable<List<Option>> getOptionsForQuestionId(Long questionId);
-    //
-    //
-    //    Observable<Boolean> isOptionEmpty();
-    //
-    //    Observable<Boolean> isQuestionEmpty();
-    //
-    //    Observable<Boolean> saveOption(Option option);
-    //
-    //    Observable<Boolean> saveOptionList(List<Option> optionList);
-    //
-    //    Observable<Boolean> saveQuestion(Question question);
-    //
-    //    Observable<Boolean> saveQuestionList(List<Question> questionList);
 }

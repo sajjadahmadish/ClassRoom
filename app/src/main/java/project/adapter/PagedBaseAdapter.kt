@@ -47,7 +47,6 @@ abstract class PagedBaseAdapter<T, VH : RecyclerView.ViewHolder, U : ViewDataBin
             compositeDisposable += disposable
         }
 
-
         fun bind(kFunction1: KFunction1<T?, Unit>, item: T){
             kFunction1(item)
             mBinding.executePendingBindings()

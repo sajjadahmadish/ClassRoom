@@ -4,6 +4,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Update
+import project.data.model.Topic
 
 
 interface BaseDao<T> {
@@ -23,6 +24,11 @@ interface BaseDao<T> {
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(vararg obj: T)
+
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(list: List<T>)
+
 
     /**
      * Update an object from the database.

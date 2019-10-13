@@ -10,5 +10,6 @@ object ApiEndPoint {
     const val REGISTER = "register/"
     const val SEEN = "seen/"
     const val PEOPLE = "people/{classId}"
+    const val POST = "post/{classId}"
 
 }

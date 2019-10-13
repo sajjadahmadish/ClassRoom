@@ -34,6 +34,8 @@ interface SimpleApi {
 
     fun people(classId: String): Flowable<PeopleResponse>
 
+    fun posts(classId: String): Flowable<PostResponse>
+
     fun userInfo() : Flowable<UserResponse>
 
     fun logout() : Flowable<BaseResponse>

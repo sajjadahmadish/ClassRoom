@@ -69,7 +69,7 @@ fun srcFab(fab: FloatingActionButton, drawableRes: Drawable) {
 
 @BindingAdapter("imageUrl")
 fun setImageUrl(imageView: SimpleDraweeView, url: String) {
-    val uri = Uri.parse("http://classmate.ahmadidev.ir/res/image/class/$url.png")
+    val uri = Uri.parse("http://classmate.ahmadidev.ir/class/picture/$url")
     imageView.setImageURI(uri, imageView.context)
 }
 

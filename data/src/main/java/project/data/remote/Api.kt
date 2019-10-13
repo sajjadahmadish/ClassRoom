@@ -13,10 +13,6 @@ import retrofit2.http.Path
  */
 interface Api {
 
-//    @FormUrlEncoded
-//    @POST(ApiEndPoint.REGISTER)
-//    fun registerUser(@Header("api_key") apiKey: String, @FieldMap map: Map<String, String>): Flowable<RegisterResponse>
-
     @POST(ApiEndPoint.LOGOUT)
     fun logout(): Flowable<BaseResponse>
 
@@ -44,31 +40,7 @@ interface Api {
     @POST(ApiEndPoint.PEOPLE)
     fun getPeople(@Path("classId") classId: String): Flowable<PeopleResponse>
 
-
-//    @POST(ApiEndPoint.FILTER)
-//    fun getCities(@Header("api_key") apiKey: String, @Header("token") token: String): Flowable<CityResponce>
-//
-//    @POST(ApiEndPoint.INFORMATION)
-//    fun getInfo(@Header("api_key") apiKey: String, @Header("token") token: String): Flowable<InfoResponse>
-//
-//    @FormUrlEncoded
-//    @POST(ApiEndPoint.SURVEY)
-//    fun survey(@Header("api_key") apiKey: String, @Header("token") token: String, @FieldMap map: Map<String, String>): Flowable<RequestResponse>
-//
-//    @FormUrlEncoded
-//    @POST(ApiEndPoint.REQUEST)
-//    fun request(@Header("api_key") apiKey: String, @Header("token") token: String, @FieldMap map: Map<String, String>): Flowable<RequestResponse>
-//
-//    @FormUrlEncoded
-//    @POST(ApiEndPoint.STAR)
-//    fun star(@Header("api_key") apiKey: String, @Header("token") token: String, @FieldMap map: Map<String, String>): Flowable<RequestResponse>
-//
-//    @FormUrlEncoded
-//    @POST(ApiEndPoint.COMMENT)
-//    fun comment(@Header("api_key") apiKey: String, @Header("token") token: String, @FieldMap map: Map<String, String>): Flowable<RequestResponse>
-//
-//    @POST(ApiEndPoint.LOG)
-//    fun log(@Header("api_key") apiKey: String, @Header("token") token: String): Flowable<LogResponse>
-
+    @POST(ApiEndPoint.POST)
+    fun getPosts(@Path("classId") classId: String): Flowable<PostResponse>
 
 }

@@ -17,8 +17,21 @@ constructor(
     private val mApiHelper: ServiceApi
 ) : DataManager {
 
+    override fun getPosts(classId: String): Flowable<List<Post>> {
+        return mDbHelper.getPosts(classId)
+    }
 
+
+    override fun insertPosts(response: PostResponse, id: String): Observable<Boolean> = mDbHelper.insertPosts(response, id)
     //region Database
+
+    override fun insertAndDeleteTopic(topics: List<Topic>, classId: String): Observable<Boolean> {
+        return mDbHelper.insertAndDeleteTopic(topics, classId)
+    }
+
+    override fun insertAndDeletePost(posts: List<Post>, classId: String): Observable<Boolean> {
+        return mDbHelper.insertAndDeletePost(posts, classId)
+    }
 
     override fun truncateAll(): Observable<Boolean> = mDbHelper.truncateAll()
 
@@ -67,6 +80,10 @@ constructor(
 
 
     //region Api
+
+    override fun posts(classId: String): Flowable<PostResponse> {
+        return mApiHelper.getPosts(classId)
+    }
 
     override fun logout(): Flowable<BaseResponse> {
         return mApiHelper.logout()

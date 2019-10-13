@@ -110,7 +110,8 @@ class PeopleViewModel(
                     people.self = true
             }
         }
-        if (mutableList.isNotEmpty() )
+
+        if (mutableList.isNotEmpty())
             mutableList.last().lastItem = true
 
         return mutableList

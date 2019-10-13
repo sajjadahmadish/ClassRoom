@@ -11,6 +11,10 @@ class ServiceApi(private val api: Api) {
         return api.getPeople(classId)
     }
 
+    fun getPosts(classId: String): Flowable<PostResponse> {
+        return api.getPosts(classId)
+    }
+
     fun seenPosts(map: Map<String, List<ClassSeenQueue>>): Flowable<BaseResponse> {
         return api.seenPost(map)
     }

@@ -8,12 +8,14 @@ import androidx.room.Query
 import io.reactivex.Flowable
 import project.data.model.Clazz
 import project.data.model.Post
+import project.data.model.Topic
+import kotlin.reflect.jvm.internal.impl.name.ClassId
 
 @Dao
 interface PostDao : BaseDao<Post> {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertClazz(post: List<Post>)
+    fun insertPost(post: List<Post>)
 
 
     @Query("select * from Post")
@@ -23,8 +25,11 @@ interface PostDao : BaseDao<Post> {
     fun find(postId: String): Flowable<Post>
 
 
-    @Query("delete from Post where id not in (:idList)")
-    fun deleteList(idList: List<String>)
+    @Query("delete from Post where topicId in (:topicIds)")
+    fun deleteByTopicId(topicIds: List<String>)
+
+    @Query("select * from Post join Topic where classId = :classId")
+    fun loadByClassId(classId: String): Flowable<List<Post>>
 
     @Query("DELETE FROM Post")
     fun truncate()

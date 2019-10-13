@@ -2,19 +2,15 @@ package project.ui.course
 
 import android.view.View
 import androidx.databinding.ObservableInt
-import io.reactivex.Observable
-import io.reactivex.disposables.Disposable
-import io.reactivex.rxkotlin.plusAssign
 import project.data.DataManager
 import project.data.model.Clazz
 import project.data.model.Member
+import project.data.model.PostResponse
 import project.ui.base.BaseViewModel
 import project.utils.AppLogger
-import project.utils.change
 import project.utils.extension.forDatabase
 import project.utils.extension.forIo
 import project.utils.rx.SchedulerProvider
-import java.util.concurrent.TimeUnit
 
 class CourseViewModel(dataManager: DataManager, schedulerProvider: SchedulerProvider) :
     BaseViewModel<CourseNavigator>(dataManager, schedulerProvider) {
@@ -26,6 +22,7 @@ class CourseViewModel(dataManager: DataManager, schedulerProvider: SchedulerProv
 
     private fun start() {
         withInternet {
+            onlinePosts()
             onlinePeople()
             true
         }
@@ -60,7 +57,9 @@ class CourseViewModel(dataManager: DataManager, schedulerProvider: SchedulerProv
     private fun insertOnDatabase(list: List<Member>) {
         this += dataManager.insertAndDeletePeople(list, clazz.id)
             .forDatabase(schedulerProvider)
-            .subscribe{}
+            .subscribe {
+
+            }
     }
 
     fun getClazz(classId: String, callback: (Clazz) -> Unit) {
@@ -70,14 +69,32 @@ class CourseViewModel(dataManager: DataManager, schedulerProvider: SchedulerProv
                 callback.invoke(it)
                 clazz = it
                 start()
-            } , {
+            }, {
 
             })
     }
 
+    private fun onlinePosts() {
+        this += dataManager.posts(clazz.id)
+            .forIo(schedulerProvider)
+            .subscribe({
+                insertPosts(it)
+            }, {
+
+            })
+    }
+
+    private fun insertPosts(it: PostResponse) {
+        this += dataManager.insertPosts(it, clazz.id)
+            .forDatabase(schedulerProvider)
+            .subscribe({ _ ->
+                AppLogger.i("insert posts")
+            }, {
+                AppLogger.i("error insert posts")
+            })
+    }
 
     fun onClickBack(view: View) = navigator.goBack()
-
 
 
 }

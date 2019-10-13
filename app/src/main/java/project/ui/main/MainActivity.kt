@@ -21,6 +21,7 @@ import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem
 import io.github.inflationx.calligraphy3.CalligraphyUtils
 import io.reactivex.Observable
+import io.reactivex.rxkotlin.toObservable
 import ir.sinapp.classroom.BR
 import ir.sinapp.classroom.R
 import ir.sinapp.classroom.databinding.ActivityMainBinding
@@ -92,12 +93,9 @@ class MainActivity :
             setUpDrawer()
         }
 
-
         setUp()
 
-
         initNotify()
-
 
         changeTabsFont(binding.tabs, "fonts/IRANYekanMobileRegular.ttf")
 
