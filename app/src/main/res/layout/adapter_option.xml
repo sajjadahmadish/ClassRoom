@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+        <variable
+                name="clazz"
+                type="project.data.model.Clazz" />
+
+    </data>
+
+
+    <LinearLayout
+            android:id="@+id/lyt_option"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/adapter_clazz_height"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_small"
+                android:gravity="center"
+                android:orientation="vertical">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    srcFab='@{(clazz.userType.equals("1") || clazz.userType.equals("2")) ? @drawable/ic_info : @drawable/ic_settings}'
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_middle"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:tint="@color/colorPrimary"
+                    app:backgroundTint="@android:color/white"
+                    app:elevation="4dp"
+                    app:fabSize="normal"
+                    app:rippleColor="@color/colorPrimaryLight"
+                    tools:srcCompat="@drawable/ic_settings" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    asyncText='@{(clazz.userType.equals("2") || clazz.userType.equals("1")) ? @string/class_info : @string/class_setting}'
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                    tools:text="@string/class_setting" />
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_small"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility='@{(clazz.userType.equals("2") || clazz.userType.equals("5")) ? View.VISIBLE : View.GONE}'>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_middle"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:tint="@color/colorPrimary"
+                    app:backgroundTint="@android:color/white"
+                    app:elevation="4dp"
+                    app:fabSize="normal"
+                    app:rippleColor="@color/colorPrimaryLight"
+                    app:srcCompat="@drawable/ic_unenroll" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    asyncText="@{@string/unenroll}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/class_setting"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2" />
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_small"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility='@{!clazz.userType.equals("6") ? View.GONE : View.VISIBLE}'>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_middle"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:tint="@color/colorPrimary"
+                    app:backgroundTint="@android:color/white"
+                    app:elevation="4dp"
+                    app:fabSize="normal"
+                    app:rippleColor="@color/colorPrimaryLight"
+                    app:srcCompat="@drawable/ic_archive" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    asyncText="@{@string/archive}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/class_setting"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2" />
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_small"
+                android:gravity="center"
+                android:orientation="vertical">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_middle"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:tint="@color/colorPrimary"
+                    app:backgroundTint="@android:color/white"
+                    app:elevation="4dp"
+                    app:fabSize="normal"
+                    app:rippleColor="@color/colorPrimaryLight"
+                    app:srcCompat="@drawable/ic_hide" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    asyncText="@{@string/hide}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/class_setting"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+</layout>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "225985560555",
+    "firebase_url": "https://classmate-c30b6.firebaseio.com",
+    "project_id": "classmate-c30b6",
+    "storage_bucket": "classmate-c30b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225985560555:android:ae9df3d982021918",
+        "android_client_info": {
+          "package_name": "ir.sinapp.classroom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "225985560555-e54vuiuuulqiaoj6tc4ef880nlarkre5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ir.sinapp.classroom",
+            "certificate_hash": "38150074f30abab49e9ec3615cce37fd3d8dc0f4"
+          }
+        },
+        {
+          "client_id": "225985560555-v332pblvedoc4fd8luummg1en79h11k2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBo8hFCXui8Ek4P1gUMrRlb5nUbU0loHVY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "225985560555-v332pblvedoc4fd8luummg1en79h11k2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

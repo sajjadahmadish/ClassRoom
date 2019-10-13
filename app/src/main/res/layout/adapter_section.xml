@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="project.data.model.People.Type" />
+
+        <variable
+                name="people"
+                type="project.data.model.People" />
+
+    </data>
+
+    <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+                fontPath='@{"fonts/IRANYekanMobileBold.ttf"}'
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_mlarge"
+                android:layout_marginTop="@dimen/spacing_mlarge"
+                android:layout_marginBottom="@dimen/spacing_large"
+                asyncText="@{people.type == Type.STUDENT_SECTION? (people.userType >= 3 ? @string/students: @string/classmates): (people.type == Type.TA_SECTION ?@string/teacherAssistants: @string/teachers)}"
+                android:gravity="center"
+                android:textSize="15sp"
+                tools:text="@string/teacherAssistants" />
+
+        <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+        <ImageButton
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:tint="@color/colorPrimary"
+                android:layout_marginEnd="@dimen/spacing_middle"
+                visible="@{people.addUser}"
+                app:srcCompat="@drawable/ic_add_user"
+                tools:ignore="ContentDescription" />
+
+        <ImageButton
+                android:id="@+id/option"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="@dimen/spacing_middle"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:tint="@color/colorPrimary"
+                visible="@{people.orderOption}"
+                app:srcCompat="@drawable/ic_more_vert_black_24dp"
+                tools:ignore="ContentDescription" />
+
+
+    </LinearLayout>
+
+
+</layout>
+

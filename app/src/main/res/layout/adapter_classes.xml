@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+                name="clazz"
+                type="project.data.model.Clazz" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_middle"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="1dp">
+
+        <com.balysv.materialripple.MaterialRippleLayout
+                android:id="@+id/lyt"
+                style="@style/RippleStyleBlack"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/adapter_clazz_height">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/lyt_base"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:visibility="visible"
+                        tools:visibility="visible">
+
+                    <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintEnd_toStartOf="@+id/simpleDraweeView"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/badge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif"
+                                android:gravity="center"
+                                android:layout_margin="@dimen/spacing_middle"
+                                android:lines="1"
+                                android:minWidth="20dp"
+                                android:paddingLeft="1dp"
+                                android:paddingRight="1dp"
+                                android:singleLine="true"
+                                android:visibility='@{clazz.badge == 0 ? View.GONE: View.VISIBLE}'
+                                asyncText="@{clazz.badgeStr}"
+                                android:textSize="@dimen/material_drawer_item_primary_text"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="99" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/appCompatTextView"
+                                asyncText="@{clazz.name}"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_large"
+                                android:gravity="center"
+                                android:layout_marginEnd="@dimen/spacing_middle"
+                                android:textSize="17sp"
+                                app:layout_constraintEnd_toStartOf="@+id/simpleDraweeView"
+                                app:layout_constraintStart_toEndOf="@+id/material_drawer_badge"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="طرad hgfgم" />
+
+
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                            asyncText='@{!(clazz.userType.equals("1") || clazz.userType.equals("2")) ? @string/count_student(clazz.studentCount) : clazz.teacherString}'
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/spacing_large"
+                            android:layout_marginBottom="@dimen/spacing_middle"
+                            android:gravity="center"
+                            android:text="@string/archived_class"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                            asyncText='@{!(clazz.userType.equals("1") || clazz.userType.equals("2")) ? @string/count_student(clazz.studentCount) : clazz.teacherString}'
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/spacing_large"
+                            android:layout_marginBottom="@dimen/spacing_middle"
+                            android:gravity="center"
+                            android:text="@string/archived_class"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                            android:id="@+id/simpleDraweeView"
+                            imageUrl="@{clazz.id}"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="13dp"
+                            app:actualImageScaleType="fitCenter"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</layout>
+

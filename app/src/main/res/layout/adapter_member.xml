@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="people"
+            type="project.data.model.People" />
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/lyt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@{people.firstLastItem ? (@drawable/item_top_bottom) : (people.middle? @drawable/item_middle : (people.firstItem? @drawable/item_top : @drawable/item_bottom))}"
+        android:padding="20dp">
+
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/avatarImage"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            app:placeholderImage="@drawable/ic_user_man" />
+
+        <TextView
+            android:id="@+id/userNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:layout_toEndOf="@+id/avatarImage"
+            android:text="@{people.member.fullName()}"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            tools:text="Sandra Adams" />
+
+        <TextView
+            android:id="@+id/userCommentText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/userNameText"
+            android:layout_marginStart="17dp"
+            android:layout_toEndOf="@+id/avatarImage"
+            android:text="@{people.member.username}"
+            android:visibility="@{people.showUsername ? View.VISIBLE : View.GONE}"
+            tools:text="Lorem da at ut neque." />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true">
+
+            <ImageView
+                visible="@{people.hasBlock}"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="@dimen/spacing_large"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:tint="@color/red_500"
+                app:srcCompat="@drawable/ic_block"
+                tools:ignore="ContentDescription" />
+
+            <ImageButton
+                android:id="@+id/message"
+                visible="@{people.hasMessageIcon}"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="@dimen/spacing_middle"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:tint="@color/colorPrimary"
+                app:srcCompat="@drawable/ic_message"
+                tools:ignore="ContentDescription" />
+
+            <ImageButton
+                android:id="@+id/option"
+                visible="@{people.hasList}"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:tint="@color/colorPrimary"
+                app:srcCompat="@drawable/ic_more_vert_black_24dp"
+                tools:ignore="ContentDescription" />
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+
+</layout>
+
