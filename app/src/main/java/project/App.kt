@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.res.Configuration
 import android.os.StrictMode
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.multidex.MultiDex
 import androidx.preference.PreferenceManager
 import com.facebook.drawee.backends.pipeline.Fresco
@@ -87,6 +88,9 @@ class App : DaggerApplication(), HasActivityInjector {
 
     override fun onCreate() {
         super.onCreate()
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.getDefaultNightMode())
+
+
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
 
