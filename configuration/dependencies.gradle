@@ -124,7 +124,7 @@ ext {
             'com.google.firebase:firebase-dynamic-links:19.0.0',
 
             'com.google.android.gms:play-services-maps:16.1.0',
-            'com.google.maps.android:android-maps-utils:+'
+            'com.google.maps.android:android-maps-utils:0.6.2'
     ]
 
 
@@ -225,7 +225,7 @@ ext {
 
 
     thirdPartyDependencies = [
-            'com.blankj:utilcodex:+',
+            'com.blankj:utilcodex:1.26.1-alpha0',
             'com.github.HITGIF:TextFieldBoxes:1.4.4',
 
             'com.github.devlight.navigationtabstrip:navigationtabstrip:1.0.4',
