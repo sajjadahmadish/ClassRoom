@@ -118,7 +118,7 @@ class MainActivity :
         binding.textSwitcher.setFactory {
             val t = TextView(this@MainActivity)
             t.gravity = Gravity.CENTER
-            t.setTextColor(resources.getColor(R.color.colorPrimary))
+            t.setTextColor(resources.getColor(R.color.colorPrimaryBackground))
             t.textSize = 21f
             t.typeface = CommonUtils.typefaceFromAsset("fonts/IRANYekanMobileRegular.ttf", this)
             t
@@ -271,10 +271,10 @@ class MainActivity :
             .withActionBarDrawerToggleAnimated(true)
             .build()
 
-        Tools.setSystemBarColor(this, R.color.colorPrimary)
+//        Tools.setSystemBarColor(this, R.color.colorPrimaryBackground)
         Tools.changeNavigateionIconColor(
             binding.toolbar,
-            resources.getColor(R.color.colorPrimaryDark)
+            resources.getColor(R.color.colorAccent)
         )
 
         viewModel.badge {

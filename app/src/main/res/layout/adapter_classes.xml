@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_middle"
             app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="@color/colorSecondaryBackground"
             app:cardElevation="1dp">
 
         <com.balysv.materialripple.MaterialRippleLayout
@@ -63,6 +64,7 @@
                                 android:visibility='@{clazz.badge == 0 ? View.GONE: View.VISIBLE}'
                                 asyncText="@{clazz.badgeStr}"
                                 android:textSize="@dimen/material_drawer_item_primary_text"
+                                android:textColor="@color/colorPrimaryText"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 tools:text="99" />
@@ -76,6 +78,7 @@
                                 android:gravity="center"
                                 android:layout_marginEnd="@dimen/spacing_middle"
                                 android:textSize="17sp"
+                                android:textColor="@color/colorPrimaryText"
                                 app:layout_constraintEnd_toStartOf="@+id/simpleDraweeView"
                                 app:layout_constraintStart_toEndOf="@+id/material_drawer_badge"
                                 app:layout_constraintTop_toTopOf="parent"
@@ -103,6 +106,7 @@
                             android:layout_marginStart="@dimen/spacing_large"
                             android:layout_marginBottom="@dimen/spacing_middle"
                             android:gravity="center"
+                        android:textColor="@color/colorSecondaryText"
                             android:text="@string/archived_class"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent" />
