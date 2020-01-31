@@ -24,6 +24,7 @@ import project.utils.rx.SchedulerProvider
 import javax.inject.Inject
 import javax.inject.Singleton
 
+
 @Singleton
 class ViewModelProviderFactory @Inject constructor(
     private val dataManager: DataManager,
