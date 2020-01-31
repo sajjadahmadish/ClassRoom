@@ -88,7 +88,7 @@ class App : DaggerApplication(), HasActivityInjector {
 
     override fun onCreate() {
         super.onCreate()
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.getDefaultNightMode())
+//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.getDefaultNightMode())
 
 
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
