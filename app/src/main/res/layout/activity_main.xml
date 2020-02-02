@@ -237,8 +237,7 @@
                         android:layout_gravity="center_vertical|end"
                         android:layout_margin="@dimen/spacing_middle"
                         android:onClick="@{viewModel::create}"
-                        app:cardBackgroundColorGIT STATUS
-                    ="@color/colorSecondaryBackground"
+                        app:cardBackgroundColor="@color/colorSecondaryBackground"
                         app:cardCornerRadius="3dp"
                         app:cardElevation="2dp"
 
