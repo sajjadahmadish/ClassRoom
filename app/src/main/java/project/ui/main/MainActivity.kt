@@ -226,6 +226,7 @@ class MainActivity :
             .withIcon(R.drawable.ic_moon)
             .withTypeface(font)
             .withChecked(isNightMode())
+            .withSelectable(false)
             .withOnCheckedChangeListener { _, _, isChecked ->
                 drawer.closeDrawer()
                 if (!isChecked)
