@@ -1,5 +1,6 @@
 package project.ui.main
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
@@ -175,7 +176,6 @@ class MainActivity :
             .withName(R.string.classes)
             .withIcon(R.drawable.ic_classmatelogo)
             .withTypeface(font)
-            .withTextColorRes(R.color.grey_800)
 
 
         val itemCalender = MyDrawerItem()
@@ -184,7 +184,6 @@ class MainActivity :
             .withName(R.string.calender)
             .withIcon(R.drawable.ic_calendar)
             .withTypeface(font)
-            .withTextColorRes(R.color.grey_800)
 
 //
 //        notificationItem = MyDrawerItem()
@@ -193,7 +192,6 @@ class MainActivity :
 //            .withIconTintingEnabled(true)
 //            .withIcon(R.drawable.ic_notification)
 //            .withTypeface(font)
-//            .withTextColorRes(R.color.grey_800)
 
         val itemArchived = MyDrawerItem()
             .withSelected(false)
@@ -201,7 +199,6 @@ class MainActivity :
             .withName(R.string.archived_class)
             .withIcon(R.drawable.ic_archive)
             .withTypeface(font)
-            .withTextColorRes(R.color.grey_800)
 
         val itemHided = MyDrawerItem()
             .withSelected(false)
@@ -209,7 +206,6 @@ class MainActivity :
             .withName(R.string.hided_class)
             .withIcon(R.drawable.ic_hide)
             .withTypeface(font)
-            .withTextColorRes(R.color.grey_800)
 
 
         val itemSetting = MyDrawerItem()
@@ -218,7 +214,6 @@ class MainActivity :
             .withIconTintingEnabled(true)
             .withIcon(R.drawable.ic_settings)
             .withTypeface(font)
-            .withTextColorRes(R.color.grey_800)
 
 
         val itemHelp = MyDrawerItem()
@@ -227,7 +222,6 @@ class MainActivity :
             .withName(R.string.help)
             .withIcon(R.drawable.ic_help)
             .withTypeface(font)
-            .withTextColorRes(R.color.grey_800)
 
         drawer = drawerBuilder
             .withOnDrawerListener(object : Drawer.OnDrawerListener {
@@ -271,6 +265,10 @@ class MainActivity :
             .withActionBarDrawerToggleAnimated(true)
             .build()
 
+
+        val f = Tools.getMode(this)
+        if (f != Configuration.UI_MODE_NIGHT_YES)
+            Tools.setSystemBarLight(this)
 //        Tools.setSystemBarColor(this, R.color.colorPrimaryBackground)
         Tools.changeNavigateionIconColor(
             binding.toolbar,

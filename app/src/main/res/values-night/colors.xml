@@ -6,6 +6,8 @@
     <color name="colorAccent">#00b8d4</color>
     <color name="colorPrimaryBackground">#080808</color>
     <color name="colorSecondaryBackground">#252525</color>
+    <color name="colorDrawerDivider">#1AFFFFFF</color>
+    <color name="colorDrawerIcon">#B3FFFFFF</color>
 
     <color name="colorPrimarySplash">#1a1a1a</color>
     <color name="colorSecondarySplash">#424242</color>

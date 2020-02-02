@@ -9,6 +9,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.ViewDataBinding
 import com.blankj.utilcode.util.KeyboardUtils
 import com.blankj.utilcode.util.LanguageUtils
@@ -86,12 +87,18 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel<*>>(private v
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
+//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+
+
         localizationActivityDelegate.onCreate(savedInstanceState)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             CommonUtils.updateLanguage(currentLanguage, this)
         }
 
         super.onCreate(savedInstanceState)
+
+
+
         performDataBinding()
         binding.lifecycleOwner = this
 

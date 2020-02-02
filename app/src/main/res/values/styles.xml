@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="fontPath">fonts/IRANYekanMobileRegular.ttf</item>
         <item name="colorPrimary">@color/colorPrimaryText</item>
@@ -151,14 +151,6 @@
     </style>
 
 
-    <style name="AppThemeWithActionBar" parent="Theme.AppCompat.Light">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColorPrimary">#ffffffff</item>
-        <item name="android:textColorSecondary">#ffffffff</item>
-    </style>
-
 
     <style name="unselectedItemWalletText">
         <item name="android:textColor">@color/grey_400</item>
@@ -204,5 +196,18 @@
         <item name="contentInsetStart">0dp</item>
         <item name="contentInsetStartWithNavigation">0dp</item>
     </style>
+
+
+    <style name="AppTheme.Drawer" parent="MaterialDrawerTheme">
+
+        <!-- MaterialDrawer specific values -->
+        <item name="material_drawer_background">@color/colorSecondaryBackground</item>
+        <item name="material_drawer_primary_text">@color/colorPrimaryText</item>
+        <item name="material_drawer_divider">@color/colorDrawerDivider</item>
+        <item name="material_drawer_primary_icon">@color/colorDrawerIcon</item>
+
+
+    </style>
+
 
 </resources>
