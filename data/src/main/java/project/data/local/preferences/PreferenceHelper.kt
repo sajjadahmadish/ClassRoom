@@ -22,4 +22,6 @@ interface PreferenceHelper {
 
     var notify: Boolean
 
+    var theme: DataManager.Theme
+
 }

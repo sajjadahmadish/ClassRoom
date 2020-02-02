@@ -32,8 +32,9 @@ class AppPreferenceHelper @Inject constructor(context: Context) : PreferenceHold
 
     override var gender: Boolean? by bindToPreferenceFieldNullable()
 
-
     override var notify: Boolean by bindToPreferenceField(false)
+
+    override var theme: DataManager.Theme by bindToPreferenceField(DataManager.Theme.THEME_UNDEFINED)
 }
 
 

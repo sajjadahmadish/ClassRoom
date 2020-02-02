@@ -89,14 +89,17 @@ class App : DaggerApplication(), HasActivityInjector {
     override fun onCreate() {
         super.onCreate()
 
-//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        if (dataManager.theme == DataManager.Theme.THEME_DARK) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
 
 
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
 
         val ctx = applicationContext
-        org.osmdroid.config.Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx))
+        org.osmdroid.config.Configuration.getInstance()
+            .load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx))
 
 
 

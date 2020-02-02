@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-<!--
+
     <color name="colorPrimary">#00b8d4</color>
     <color name="colorPrimaryDark">#0088a3</color>
-    <color name="colorAccent">#546e7a</color>
-    <color name="colorPrimaryOverlay">#660088a3</color>
--->
 
 
     <color name="colorPrimaryText">#616161</color>
@@ -16,6 +13,7 @@
     <color name="colorSecondaryBackground">#FFFFFF</color>
     <color name="colorDrawerDivider">#1A000000</color>
     <color name="colorDrawerIcon">#8A000000</color>
+    <color name="colorBackDrop">#F5FFFFFF</color>
 
 
     <color name="colorPrimarySplash">#00838F</color>
@@ -32,6 +30,8 @@
     <color name="overlay_dark_70">#B3000000</color>
     <color name="overlay_dark_80">#CC000000</color>
     <color name="overlay_dark_90">#E6000000</color>
+
+    <color name="overlay_dark_95">#F5FFFFFF</color>
 
     <color name="overlay_light_10">#1AFFFFFF</color>
     <color name="overlay_light_20">#33FFFFFF</color>

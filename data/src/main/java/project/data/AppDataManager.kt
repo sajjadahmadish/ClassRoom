@@ -230,6 +230,11 @@ constructor(
             mPreferencesHelper.notify = value
         }
 
+    override var theme: DataManager.Theme
+        get() = mPreferencesHelper.theme
+        set(value) {
+            mPreferencesHelper.theme = value
+        }
 
     //endregion
 

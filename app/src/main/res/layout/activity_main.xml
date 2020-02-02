@@ -153,7 +153,7 @@
                 android:id="@+id/back_drop"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/overlay_light_95"
+                android:background="@color/colorBackDrop"
                 android:clickable="true"
                 android:fitsSystemWindows="true"
                 android:focusable="true"
@@ -183,7 +183,7 @@
                         android:layout_gravity="center_vertical|end"
                         android:layout_margin="@dimen/spacing_middle"
                         android:onClick="@{viewModel::join}"
-                        app:cardBackgroundColor="@android:color/white"
+                        app:cardBackgroundColor="@color/colorSecondaryBackground"
                         app:cardCornerRadius="3dp"
                         app:cardElevation="2dp"
                         app:contentPadding="@dimen/spacing_medium">
@@ -195,6 +195,7 @@
                             android:layout_gravity="center"
                             android:layout_margin="@dimen/spacing_xsmall"
                             android:gravity="center"
+                            android:textColor="@color/colorPrimaryText"
                             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                             tools:text="@string/join_class" />
 
@@ -213,7 +214,7 @@
                         android:focusable="true"
                         android:onClick="@{viewModel::join}"
                         android:tint="@color/colorPrimary"
-                        app:backgroundTint="@android:color/white"
+                        app:backgroundTint="@color/colorSecondaryBackground"
                         app:fabSize="mini"
                         app:rippleColor="@color/grey_700" />
 
@@ -236,9 +237,11 @@
                         android:layout_gravity="center_vertical|end"
                         android:layout_margin="@dimen/spacing_middle"
                         android:onClick="@{viewModel::create}"
-                        app:cardBackgroundColor="@android:color/white"
+                        app:cardBackgroundColorGIT STATUS
+                    ="@color/colorSecondaryBackground"
                         app:cardCornerRadius="3dp"
                         app:cardElevation="2dp"
+
                         app:contentPadding="@dimen/spacing_medium">
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -248,6 +251,7 @@
                             android:layout_gravity="center"
                             android:layout_margin="@dimen/spacing_xsmall"
                             android:gravity="center"
+                            android:textColor="@color/colorPrimaryText"
                             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                             tools:text="@string/create_class" />
 
@@ -266,7 +270,7 @@
                         android:focusable="true"
                         android:onClick="@{viewModel::create}"
                         android:tint="@color/colorPrimary"
-                        app:backgroundTint="@android:color/white"
+                        app:backgroundTint="@color/colorSecondaryBackground"
                         app:fabSize="mini"
                         app:rippleColor="@color/grey_700" />
 
