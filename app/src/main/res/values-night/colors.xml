@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#212121</color>
-    <color name="colorPrimaryDark">#424242</color>
-    <color name="colorAccent">#546e7a</color>
 
+    <color name="colorPrimary">#00b8d4</color>
+    <color name="colorPrimaryDark">#0088a3</color>
 
-    <color name="colorPrimaryOverlay">#660088a3</color>
+    <color name="colorPrimaryText">#ffffff</color>
+    <color name="colorSecondaryText">#9E9E9E</color>
+    <color name="colorAccent">#00b8d4</color>
+    <color name="colorPrimaryBackground">#080808</color>
+    <color name="colorSecondaryBackground">#252525</color>
+    <color name="colorDrawerDivider">#1AFFFFFF</color>
+    <color name="colorDrawerIcon">#B3FFFFFF</color>
+    <color name="colorBackDrop">#F5000000</color>
+
+    <color name="colorPrimarySplash">#1a1a1a</color>
+    <color name="colorSecondarySplash">#424242</color>
 
     <color name="overlay_dark_10">#1A000000</color>
     <color name="overlay_dark_20">#33000000</color>
@@ -16,6 +25,9 @@
     <color name="overlay_dark_70">#B3000000</color>
     <color name="overlay_dark_80">#CC000000</color>
     <color name="overlay_dark_90">#E6000000</color>
+
+    <color name="overlay_dark_95">#F5000000</color>
+
 
     <color name="overlay_light_10">#1AFFFFFF</color>
     <color name="overlay_light_20">#33FFFFFF</color>

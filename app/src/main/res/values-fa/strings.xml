@@ -33,6 +33,7 @@
     <string name="archive">آرشیو</string>
     <string name="notifications">پیام ها</string>
     <string name="settings">تنظیمات</string>
+    <string name="night_mode">حالت شب</string>
     <string name="help">راهنما</string>
     <string name="archived_class">کلاس‌های آرشیو شده</string>
     <string name="hided_class">کلاس‌های مخفی شده</string>
@@ -61,4 +62,9 @@
     <string name="mute">غیرفعال</string>
     <string name="unmute">فعال</string>
 
+    <string name="theme_title"> حالت:</string>
+    <string name="light_theme">حالت شب</string>
+    <string name="dark_theme">حالت روز</string>
+    <string name="system_theme">استفاده از حالت سیستم</string>
+    <string name="battery_saver_theme">حالت ذخیره باتری</string>
 </resources>

@@ -2,7 +2,7 @@ ext {
 
     compiler = [
             java  : JavaVersion.VERSION_1_8,
-            kotlin: '1.3.50'
+            kotlin: '1.3.61'
     ]
 
     android = [
@@ -249,11 +249,6 @@ ext {
             'com.shawnlin:number-picker:2.4.6',
 
             "com.mikepenz:materialdrawer:7.0.0-alpha2",
-//            'com.mikepenz:google-material-typeface:3.0.1.1.original@aar',
-//            'com.mikepenz:fontawesome-typeface:5.0.6.0@aar',
-//            'com.mikepenz:octicons-typeface:3.0.0.1@aar',
-            'com.mikepenz:crossfader:1.6.0',
-            'com.mikepenz:crossfadedrawerlayout:1.1.0',
 
 
             'com.stepstone.stepper:material-stepper:4.3.1',

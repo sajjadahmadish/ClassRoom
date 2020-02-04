@@ -1,11 +1,14 @@
 package project.ui.main
 
+import android.content.res.Configuration
+import android.os.Build
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.commitNow
 import com.crashlytics.android.Crashlytics
 import com.google.android.material.tabs.TabLayout
@@ -19,6 +22,7 @@ import com.mikepenz.materialdrawer.DrawerBuilder
 import com.mikepenz.materialdrawer.holder.StringHolder
 import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem
+import com.mikepenz.materialdrawer.model.SwitchDrawerItem
 import io.github.inflationx.calligraphy3.CalligraphyUtils
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.toObservable
@@ -30,6 +34,7 @@ import kotlinx.coroutines.runBlocking
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import project.adapter.ClassesAdapter
+import project.data.DataManager
 import project.ui.base.BaseActivity
 import project.ui.course.CourseActivity
 import project.ui.create.CreateActivity
@@ -118,7 +123,7 @@ class MainActivity :
         binding.textSwitcher.setFactory {
             val t = TextView(this@MainActivity)
             t.gravity = Gravity.CENTER
-            t.setTextColor(resources.getColor(R.color.colorPrimary))
+            t.setTextColor(resources.getColor(R.color.colorAccent))
             t.textSize = 21f
             t.typeface = CommonUtils.typefaceFromAsset("fonts/IRANYekanMobileRegular.ttf", this)
             t
@@ -175,7 +180,6 @@ class MainActivity :
             .withName(R.string.classes)
             .withIcon(R.drawable.ic_classmatelogo)
             .withTypeface(font)
-            .withTextColorRes(R.color.grey_800)
 
 
         val itemCalender = MyDrawerItem()
@@ -184,7 +188,6 @@ class MainActivity :
             .withName(R.string.calender)
             .withIcon(R.drawable.ic_calendar)
             .withTypeface(font)
-            .withTextColorRes(R.color.grey_800)
 
 //
 //        notificationItem = MyDrawerItem()
@@ -193,7 +196,6 @@ class MainActivity :
 //            .withIconTintingEnabled(true)
 //            .withIcon(R.drawable.ic_notification)
 //            .withTypeface(font)
-//            .withTextColorRes(R.color.grey_800)
 
         val itemArchived = MyDrawerItem()
             .withSelected(false)
@@ -201,7 +203,6 @@ class MainActivity :
             .withName(R.string.archived_class)
             .withIcon(R.drawable.ic_archive)
             .withTypeface(font)
-            .withTextColorRes(R.color.grey_800)
 
         val itemHided = MyDrawerItem()
             .withSelected(false)
@@ -209,7 +210,6 @@ class MainActivity :
             .withName(R.string.hided_class)
             .withIcon(R.drawable.ic_hide)
             .withTypeface(font)
-            .withTextColorRes(R.color.grey_800)
 
 
         val itemSetting = MyDrawerItem()
@@ -218,7 +218,28 @@ class MainActivity :
             .withIconTintingEnabled(true)
             .withIcon(R.drawable.ic_settings)
             .withTypeface(font)
-            .withTextColorRes(R.color.grey_800)
+
+        val itemDayNight = SwitchDrawerItem()
+            .withSelected(false)
+            .withName(R.string.night_mode)
+            .withIconTintingEnabled(true)
+            .withIcon(R.drawable.ic_moon)
+            .withTypeface(font)
+            .withChecked(isNightMode())
+            .withSelectable(false)
+            .withOnCheckedChangeListener { _, _, isChecked ->
+                drawer.closeDrawer()
+                if (!isChecked)
+                    viewModel.setTheme(
+                        AppCompatDelegate.MODE_NIGHT_NO,
+                        DataManager.Theme.THEME_LIGHT
+                    )
+                else viewModel.setTheme(
+                    AppCompatDelegate.MODE_NIGHT_YES,
+                    DataManager.Theme.THEME_DARK
+                )
+            }
+
 
 
         val itemHelp = MyDrawerItem()
@@ -227,7 +248,6 @@ class MainActivity :
             .withName(R.string.help)
             .withIcon(R.drawable.ic_help)
             .withTypeface(font)
-            .withTextColorRes(R.color.grey_800)
 
         drawer = drawerBuilder
             .withOnDrawerListener(object : Drawer.OnDrawerListener {
@@ -258,23 +278,32 @@ class MainActivity :
                 itemSetting,
                 itemHelp
             )
+            .addStickyDrawerItems(
+                itemDayNight
+            )
             .withOnDrawerItemClickListener { _, position, drawerItem ->
                 runBlocking {
-                    if (viewModel.tab.get() != position) {
+                    if (viewModel.tab.get() != position && drawerItem != itemDayNight) {
                         drawerItem as MyDrawerItem
                         showFragment(drawerItem.name.getText(this@MainActivity), position)
                     }
                 }
-                false
+                if (drawerItem != itemDayNight)
+                    return@withOnDrawerItemClickListener false
+                true
             }
             .withToolbar(binding.toolbar)
             .withActionBarDrawerToggleAnimated(true)
             .build()
 
-        Tools.setSystemBarColor(this, R.color.colorPrimary)
+
+        val f = Tools.getMode(this)
+        if (f != Configuration.UI_MODE_NIGHT_YES)
+            Tools.setSystemBarLight(this)
+//        Tools.setSystemBarColor(this, R.color.colorPrimaryBackground)
         Tools.changeNavigateionIconColor(
             binding.toolbar,
-            resources.getColor(R.color.colorPrimaryDark)
+            resources.getColor(R.color.colorAccent)
         )
 
         viewModel.badge {
@@ -295,6 +324,20 @@ class MainActivity :
 
     }
 
+    private fun isNightMode(): Boolean {
+        return when (viewModel.savedTheme) {
+            DataManager.Theme.THEME_LIGHT -> false
+            DataManager.Theme.THEME_DARK -> true
+            DataManager.Theme.THEME_UNDEFINED -> {
+                when (resources.configuration.uiMode.and(Configuration.UI_MODE_NIGHT_MASK)) {
+                    Configuration.UI_MODE_NIGHT_NO -> false
+                    Configuration.UI_MODE_NIGHT_YES -> true
+                    else -> false
+                }
+            }
+            else -> false
+        }
+    }
 
     private fun setUp() {
 
@@ -525,6 +568,19 @@ class MainActivity :
     fun event(event: EventNotify): Unit {
         viewModel.eventNotify()
     }
+
+
+
+
+
+    override fun onSaveInstanceState(_outState: Bundle) {
+        var outState = _outState
+        //add the values which need to be saved from the drawer to the bundle
+        outState = drawer.saveInstanceState(outState)
+
+        super.onSaveInstanceState(outState)
+    }
+
 
 }
 
